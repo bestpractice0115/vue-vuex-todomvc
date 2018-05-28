@@ -1,0 +1,42 @@
+{
+  "name": "vue-vuex-todomvc",
+  "version": "1.0.0",
+  "description": "Simple TodoMVC with Vue and Vuex",
+  "main": "app.js",
+  "scripts": {
+    "test": "start-server-and-test start http://localhost:3000 cy:run",
+    "posttest": "npm run reset:database",
+    "test:record": "start-server-and-test start http://localhost:3000 cy:run:record",
+    "prestart": "npm run reset:database",
+    "start": "json-server data.json --static . --middlewares ./node_modules/json-server-reset",
+    "poststart": "npm run reset:database",
+    "pretest": "npm run lint",
+    "lint": "standard '*.js' 'cypress/integration/*.js'",
+    "prelint": "prettier-standard '*.js' 'cypress/integration/*.js'",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:record": "cypress run --record",
+    "cy:verify": "cypress verify",
+    "reset:database": "echo '{\"todos\":[]}\n' > data.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/vue-vuex-todomvc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bahmutov/vue-vuex-todomvc/issues"
+  },
+  "homepage": "https://github.com/bahmutov/vue-vuex-todomvc#readme",
+  "dependencies": {
+    "json-server": "0.12.1"
+  },
+  "devDependencies": {
+    "cypress": "2.1.0",
+    "json-server-reset": "1.0.0",
+    "prettier-standard": "8.0.0",
+    "standard": "11.0.1",
+    "start-server-and-test": "1.1.0"
+  }
+}
